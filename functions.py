@@ -6,9 +6,10 @@ def view():
     '''Show for user the tasks'''
 
     if len(tasks) == 0:
-        print("Don't have any values yet")
-    else:
-        print(tasks)
+        return print("Don't have any values yet")
+
+    for index, value in enumerate(tasks):
+        print(f'{index}) {value}')
 
 
 def add(item: str):
@@ -35,3 +36,17 @@ def undo():
     else:
         tasks.append(deleted_itens[-1])
         deleted_itens.pop()
+
+
+def update(value: int):
+    '''Update one value in the task list'''
+
+    new_value = input('Write new task: ')
+
+    if new_value.strip == '':
+        print('You need write one value')
+    else:
+        try:
+            tasks[value] = new_value
+        except IndexError:
+            print("This index don't exist")
